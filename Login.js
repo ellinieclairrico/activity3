@@ -1,7 +1,5 @@
-// components/Login.js
-
 import React, { useState } from 'react';
-import { StyleSheet, View, Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { StyleSheet, View, Alert, KeyboardAvoidingView, Platform, ScrollView, Image } from 'react-native';
 import { TextInput, Button, Text } from 'react-native-paper';
 
 const Login = () => {
@@ -13,7 +11,7 @@ const Login = () => {
       Alert.alert('Error', 'Please fill in both fields');
     } else {
       Alert.alert('Success', `Logged in as ${username}`);
-      // Here you would typically handle the login, e.g., call an API
+    
     }
   };
 
@@ -24,6 +22,12 @@ const Login = () => {
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.formContainer}>
+          {/* Logo Image */}
+          <Image
+            source={require('../assets/download.png')} 
+            style={styles.logo}
+          />
+          
           <Text style={styles.title}>Login</Text>
 
           <TextInput
@@ -32,7 +36,7 @@ const Login = () => {
             onChangeText={setUsername}
             style={styles.input}
             mode="outlined"
-            theme={{ colors: { primary: '#800000' } }} // Maroon color for the input border
+            theme={{ colors: { primary: '#800000' } }}
           />
           
           <TextInput
@@ -42,7 +46,7 @@ const Login = () => {
             secureTextEntry
             style={styles.input}
             mode="outlined"
-            theme={{ colors: { primary: '#800000' } }} // Maroon color for the input border
+            theme={{ colors: { primary: '#800000' } }}
           />
 
           <Button mode="contained" onPress={handleLogin} style={styles.button}>
@@ -57,49 +61,57 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f4f4f4', // Light gray background for the container
-    justifyContent: 'center',  // Centers the content vertically
+    backgroundColor: '#f4f4f4',
+    justifyContent: 'center',
     padding: 16,
   },
   scrollContainer: {
-    flexGrow: 1, // Allows ScrollView to grow and fill the space
-    justifyContent: 'center', // Centers the content inside the ScrollView
-    alignItems: 'center', // Centers the form horizontally
-    paddingTop: 24,  // Optional padding for top of the screen
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 24,
   },
   formContainer: {
     width: '100%',
-    maxWidth: 400, // Max width for the form on large screens
-    backgroundColor: '#fff', // White background for the form
-    borderRadius: 8, // Rounded corners for the form
-    elevation: 4, // Shadow for the form container (Android)
-    shadowColor: '#000', // Shadow for iOS
+    maxWidth: 400,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    elevation: 4,
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
     shadowRadius: 6,
-    paddingHorizontal: 16, // Horizontal padding for the form
-    paddingVertical: 32,  // Vertical padding for the form
+    paddingHorizontal: 16,
+    paddingVertical: 32,
+    position: 'relative', 
+  },
+  logo: {
+    width: 80,
+    height: 80, 
+    position: 'absolute',
+    top: 16, 
+    left: 16, 
   },
   title: {
     fontSize: 32,
     marginBottom: 24,
     textAlign: 'center',
-    color: '#800000', // Maroon color
-    fontFamily: 'Helvetica', // Helvetica font
-    fontWeight: 'bold', // Bold title for emphasis
+    color: '#800000',
+    fontFamily: 'Helvetica',
+    fontWeight: 'bold',
   },
   input: {
     width: '100%',
     marginBottom: 16,
-    borderRadius: 8, // Rounded corners for the input fields
-    backgroundColor: '#fff', // Input background color
+    borderRadius: 8,
+    backgroundColor: '#fff',
   },
   button: {
     marginTop: 16,
-    backgroundColor: '#800000', // Maroon button color
-    width: '100%', // Button takes full width
-    paddingVertical: 12, // Padding for a more clickable button
-    borderRadius: 8, // Rounded corners for the button
+    backgroundColor: '#800000',
+    width: '100%',
+    paddingVertical: 12,
+    borderRadius: 8,
   },
 });
 
