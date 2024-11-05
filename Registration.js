@@ -1,7 +1,5 @@
-// components/Registration.js
-
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Text, Alert, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, TextInput, View, Text, Alert, ScrollView, KeyboardAvoidingView, Platform, Image } from 'react-native';
 import { Button as PaperButton, useTheme } from 'react-native-paper';
 
 const Registration = () => {
@@ -28,6 +26,12 @@ const Registration = () => {
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.formContainer}>
+          {/* Download Icon */}
+          <Image
+            source={require('../assets/download.png')} 
+            style={styles.downloadIcon}
+          />
+
           <Text style={styles.title}>Create an Account</Text>
 
           <TextInput
@@ -121,6 +125,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
     shadowRadius: 6,
+    position: 'relative', 
+  },
+  downloadIcon: {
+    width: 40, 
+    height: 40, 
+    position: 'absolute',
+    top: 16, 
+    right: 16, 
   },
   title: {
     fontSize: 32,
